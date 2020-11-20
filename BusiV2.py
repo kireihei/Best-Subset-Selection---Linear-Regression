@@ -46,8 +46,14 @@ for k in range(1, len(x.columns) + 1):
         numb_indvar.append(len(combo))
 
 # Store in DataFrame
-bess = pd.DataFrame({'numb_indvar': numb_indvar,'MSE': MSE_list, 'R_squared':R_squared_list,'features':feature_list})
-print(bess)
+bess = pd.DataFrame({'numb_indvar': numb_indvar,'MSE': MSE_list, 'R_squared':R_squared_list, 'Adjusted_R_squared':adj_r_squared_list, 'features':feature_list})
+# replace indices
+
+# Add a Series of Mallow's Cp Statistic to the dataframe
+no_indvar = 7  # number of independent variables
+no_para = 8  # total number of parameters
+
+
 # Save to another sheet in the same excel file
 writer = pd.ExcelWriter('BusinessValuation2.xlsx',engine='openpyxl')
 book = load_workbook('BusinessValuation2.xlsx')
